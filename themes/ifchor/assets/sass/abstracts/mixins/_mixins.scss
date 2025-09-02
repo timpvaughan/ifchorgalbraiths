@@ -1,0 +1,39 @@
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Column width with margin
+@mixin column-width($numberColumns: 3) {
+	width: map-get($columns, $numberColumns) - (($columns__margin * ($numberColumns - 1)) / $numberColumns);
+}
+
+//Flex layouts
+@mixin flex($flex-direction: row, $justify-content: flex-start, $align-items: false, $flex-wrap: false) {
+	display: flex;
+	flex-direction: $flex-direction;
+	justify-content: $justify-content;
+	@if $align-items {
+		align-items: $align-items;
+	}
+	@if $flex-wrap {
+		flex-wrap: $flex-wrap;
+	}
+}
+
+//Font sizing
+@mixin font($font-size: 1.8rem, $line-height: 1.5, $font-weight: false, $text-transform: false, $word-wrap: false) {
+	font-size: $font-size;
+	line-height: $line-height;
+	@if $font-weight {
+		font-weight: $font-weight;
+	}
+	@if $text-transform {
+		text-transform: $text-transform;
+	}
+	@if $word-wrap {
+		word-wrap: $word-wrap;
+	}
+}

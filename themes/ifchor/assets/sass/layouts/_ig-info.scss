@@ -1,0 +1,124 @@
+.info-description {
+  padding: 130px 0;
+  background: #33367b;
+
+  @media (max-width: 991px) {
+    min-height: auto;
+    height: auto;
+  }
+
+  &__content {
+
+    img{
+      width: 400px;
+      display: block;
+      margin: 3rem 0;
+    }
+
+
+    @media (min-width: 991px) {
+      padding-right: 70px;
+
+      &.info-description__content--two {
+        padding-right: 90px;
+      }
+    }
+
+    p {
+      color: $color__white;
+      margin-bottom: 20px;
+      font-weight: 400;
+
+      &.info-description__lead {
+        color: $color__primary;
+        font-weight: 700;
+      }
+    }
+
+    .ifchor_btn {
+      margin-top: 17px;
+    }
+  }
+}
+
+.info-description-two {
+  padding: 120px 0;
+  height: 100vh;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 991px) {
+    min-height: auto;
+    height: auto;
+    padding: 100px 0;
+  }
+
+  .info-description-two__content {
+    font-size: 42px;
+    font-weight: 700;
+    color: $color__secondary;
+    padding-top: 25px;
+
+    p {
+      line-height: 1.2;
+    }
+
+    @media (max-width: 991px) {
+      font-size: 32px;
+    }
+
+    @media (max-width: 767px) {
+      font-size: 24px;
+    }
+
+    span {
+      color: $color__primary;
+    }
+  }
+}
+
+.page-template-tpl-ig-sustainability,
+.page-template-tpl-beyond-freight,
+.page-template-tpl-policy-regulation,
+.page-template-tpl-discovery-execution,
+.page-template-tpl-opportunity {
+  #page-header .container {
+    padding-top: 90px;
+    padding-bottom: 0;
+  }
+
+  .banner__title,
+  .bottom-icon {
+    display: none;
+  }
+}
+
+.info-description-discovery__content {
+  .info-description-two__title {
+    color: $color__primary;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    padding-top: 25px;
+  }
+}
+
+.info-description-two__logo {
+  img {
+    max-height: 120px;
+    margin-bottom: 30px;
+  }
+}
+
+
+.wpgmza_infowindow_link{
+  margin-top: 10px;
+}
+
+.job_meta_info{
+  padding-bottom: 10px;
+  font-size: 3rem;
+  font-weight: 700;
+}

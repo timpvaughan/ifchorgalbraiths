@@ -1,0 +1,40 @@
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: $font__main;
+	@include font( 2.4rem, 1.5, 400 );
+	color: $color__text-main;
+	background: $color__background-body; // Fallback for when there is no custom background color defined.
+	font-weight: 500;
+
+}
+
+.site {
+	overflow: hidden;
+
+
+	@media(min-width: 768px) {
+		padding-right: 50px;
+	}
+}
+
+body.no-scroll {
+	overflow-y: hidden;
+}
+
+button,
+input,
+select,
+optgroup,
+textarea {
+	color: $color__text-main;
+	font-family: $font__main !important;
+	font-size: 1rem;
+	line-height: $font__line-height-body;
+	font-weight: 500;
+}
+
+@import "headings";
+@import "copy";

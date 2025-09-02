@@ -1,0 +1,197 @@
+.banner {
+	position: relative;
+	height: 100vh;
+	min-height: 700px;
+
+	@media (max-width: 991px) {
+		min-height: 500px;
+	}
+
+	@media (max-width: 767px) {
+		min-height: 400px;
+	}
+
+	#banner_video_bg {
+		width: 100vw;
+		height: 100vh;
+		object-fit: cover;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: -1;
+	}
+
+	&__image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		z-index: 1;
+
+		img {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.modal-body {
+		padding: 0;
+	}
+
+	.modal-content {
+		background-color: #000;
+		border: 0;
+		border-radius: 0;
+		background-image: url("../images/banner_video_poster.jpg");
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	.ifchor-close-btn {
+		position: absolute;
+		color: #fff;
+		top: -28px;
+		right: 0;
+		font-size: 20px;
+		width: auto;
+		text-transform: uppercase;
+		background: transparent;
+		border: 0;
+		padding: 0;
+	}
+
+	@media (min-width: 1200px) {
+		.modal-xl {
+			--bs-modal-width: 1190px;
+		}
+	}
+
+	&__content {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 99;
+	}
+
+	&__title {
+		font-size: 80px;
+		font-weight: 300;
+		color: $color__white;
+		margin-bottom: 5rem;
+		max-width: 650px;
+
+		span {
+			color: $color__primary;
+			font-weight: 700;
+		}
+		@media (max-width: 1400px) {
+			font-size: 6.3rem;
+		}
+		@media (max-width: 991px) {
+			font-size: 4.3rem;
+		}
+	}
+
+	&__btn-title {
+		margin-bottom: 6px;
+	}
+
+	&__btn-title {
+		color: #fff;
+		font-weight: 700;
+		font-size: 16px;
+	}
+
+	&__button {
+		&:hover {
+			background: $color__white;
+			color: $color__secondary;
+
+			svg path {
+				fill: $color__secondary;
+			}
+
+		}
+	}
+
+	&__button-wrapper {
+		display: inline-block;
+		text-align: center;
+	}
+
+	svg.bottom-icon {
+		position: absolute;
+		bottom: 0;
+		z-index: 2;
+		left: 13%;
+	}
+}
+
+.page-template-tpl-home-page {
+	.mfp-iframe-holder .mfp-content {
+		max-width: 1400px;
+	}
+
+	.mfp-close-btn-in .mfp-close {
+		font-size: 20px;
+		text-transform: uppercase;
+	}
+}
+
+
+/* ============================
+   #Sustainability Banner
+   ============================ */
+
+.ig-banner {
+	height: 870px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: repeat;
+	display: flex;
+	align-items: center;
+
+	@media (max-width: 991px) {
+		height: auto;
+		padding: 100px 0;
+	}
+
+	&__logo {
+		margin-bottom: 46px;
+		max-width: 300px;
+	}
+
+	&__title {
+		font-size: 68px;
+		font-weight: 700;
+		color: #fff;
+		max-width: 500px;
+
+		&.width-620 {
+			max-width: 620px;
+		}
+
+		@media (max-width: 1400px) {
+			font-size: 55px;
+		 }
+
+		@media (max-width: 991px) {
+			font-size: 50px;
+		}
+
+		@media (max-width: 767px) {
+			font-size: 40px;
+		}
+	}
+
+	.banner-bottom-icon {
+		margin-top: 17px;
+	}
+}

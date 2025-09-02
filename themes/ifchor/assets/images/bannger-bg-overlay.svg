@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="621" height="339" viewBox="0 0 621 339">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_32" data-name="Rectangle 32" width="621" height="339" transform="translate(316.596 -0.404)" fill="#212f49"/>
+    </clipPath>
+  </defs>
+  <g id="bannger-bg-overlay" transform="translate(-316.596 0.404)" clip-path="url(#clip-path)">
+    <g id="Group_42" data-name="Group 42" transform="translate(176.622 -635.689)">
+      <path id="Path_206" data-name="Path 206" d="M117.252,0-39.082,64.754v1093.6H117.252Z" transform="translate(643.347 649.038)" fill="#4f4ea2"/>
+      <path id="Path_207" data-name="Path 207" d="M117.252,0-39.082,64.754V868.8H117.252Z" transform="translate(371.811 761.536)" fill="#047e8b"/>
+      <path id="Path_208" data-name="Path 208" d="M82.909,0-27.635,110.544,305.094,443.273v0l156.33-64.754Z" transform="translate(27.635 383.022)" fill="#76cedb"/>
+      <path id="Path_209" data-name="Path 209" d="M82.909,0-27.635,110.544,575.616,713.8v0l156.33-64.75Z" transform="translate(28.65)" fill="#eb5c63"/>
+    </g>
+  </g>
+</svg>

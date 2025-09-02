@@ -1,0 +1,296 @@
+.career-banner {
+	height: 870px;
+	padding: 170px 0 55px;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+
+	.button-container{
+		margin-bottom: 2rem;
+	}
+
+	@media(max-width: 991px) {
+		height: auto;
+		padding: 100px 0 55px;
+	}
+
+	&__title {
+		font-size: 68px;
+		color: #fff;
+		font-weight: 700;
+		max-width: 600px;
+		margin-bottom: 50px;
+
+		@media(max-width: 991px) {
+			font-size: 48px;
+			max-width: 450px;
+		}
+
+		@media(max-width: 576px) {
+			font-size: 40px;
+			max-width: 100%;
+		}
+	}
+
+	&__button {
+		margin-top: 30px;
+	}
+
+	.career-banner__content-wrapper {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.career-banner__contact-info {
+		margin-top: 100px;
+	}
+
+	.banner-contact-info__title {
+		font-size: 36px;
+		font-weight: 700;
+		color: #fff;
+		margin-bottom: 3px;
+
+		@media(max-width: 991px) {
+			font-size: 24px;
+		}
+	}
+
+	.banner-contact-info__email {
+		font-size: 18px;
+		color: #fff;
+		font-weight: 400;
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.email-icon {
+		height: 34px;
+		width: 34px;
+		background: $color__primary;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 30px;
+		margin-right: 10px;
+	}
+}
+
+.committed-section {
+	padding: 185px 0 100px;
+
+	@media(max-width: 991px) {
+		padding: 100px 0 50px;
+	}
+
+	.committed-section__content {
+		padding-right: 40px;
+	}
+
+	.committed-section__subtitle {
+		font-size: 14px;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: $color__primary;
+	}
+
+	h2.committed-section__title {
+		font-size: 58px;
+		font-weight: 700;
+
+		@media(max-width: 991px) {
+			font-size: 48px;
+		}
+
+		@media(max-width: 576px) {
+			font-size: 36px;
+		}
+	}
+
+	.committed-item {
+		margin-bottom: 40px;
+		padding: 0 40px;
+
+		@media(max-width: 991px) {
+			padding: 0 15px;
+		}
+	}
+
+	.committed-item__icon {
+		position: relative;
+		width: 112px;
+		height: 112px;
+		background: #e5e7e8;
+		filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.4));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		margin-bottom: 30px;
+		padding: 10px;
+		z-index: 1;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			bottom: 10px;
+			right: 10px;
+			background: $color__secondary;
+			border-radius: 50%;
+			z-index: -1;
+		}
+
+	}
+
+	.committed-item__title {
+		color: $color__primary;
+		font-size: 32px;
+		font-weight: 700;
+		margin-bottom: 12px;
+		line-height: 40px;
+
+		@media screen and (max-width: 767px) {
+			font-size: 28px;
+			line-height: 30px;
+		}
+
+	}
+
+	p.committed-item__description {
+		font-size: 20px;
+		margin: 0;
+		padding-right: 40px;
+	}
+}
+
+.career-slider {
+	position: relative;
+
+	.swiper-slide {
+		height: 945px;
+
+		@media(max-width: 1199px) {
+			height: 700px;
+		}
+
+		@media(max-width: 991px) {
+			height: 600px;
+		}
+
+		@media(max-width: 767px) {
+			height: 450px;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		&.swiper-slide-active {
+			.career-slider-content {
+				.career-slider-title {
+					animation: fadeInUp 1s both 1.3s;
+				}
+
+				.ifchor_btn {
+					animation: fadeInUp 1.5s both 1.5s
+				}
+			}
+		}
+
+		&.slider-item-1 {
+			.career-slider-content {
+				max-width: 600px;
+			}
+		}
+	}
+
+	.career-slider-content {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		max-width: 700px;
+		min-height: 320px;
+
+		@media(max-width: 1199px) {
+			transform: translateY(-70%);
+		}
+
+		@media(max-width: 1199px) {
+			min-height: auto;
+		}
+
+		.career-slider-title {
+			color: #fff;
+			font-size: 58px;
+			font-weight: 700;
+			margin-bottom: 40px;
+
+
+			@media(max-width: 1200px) {
+				font-size: 48px;
+			}
+
+			@media(max-width: 991px) {
+				font-size: 36px;
+			}
+
+			@media(max-width: 767px) {
+				font-size: 28px;
+			}
+		}
+	}
+}
+
+// FadeInUp animation @keyframes
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.career-slider-control {
+	display: flex;
+	align-items: center;
+	gap: 25px;
+	position: absolute;
+	bottom: 240px;
+	z-index: 22;
+	line-height: 1;
+
+	@media(max-width: 1199px) {
+		bottom: 180px;
+	}
+
+	@media(max-width: 991px) {
+		bottom: 30px;
+	}
+
+	.career-pagination {
+		height: 20px;
+	}
+
+	.swiper-pagination-bullet {
+		width: 20px;
+		height: 20px;
+		background: #fff;
+		opacity: 0.42;
+
+		&.swiper-pagination-bullet-active {
+			opacity: 1;
+			background: $color__primary;
+		}
+	}
+}

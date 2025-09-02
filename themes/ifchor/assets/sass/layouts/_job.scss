@@ -1,0 +1,112 @@
+.career-section {
+	background: #F4F4F4;
+	padding: 80px 70px 50px;
+
+	@media(max-width: 1440px) {
+		padding: 100px 30px 50px;
+	}
+
+	.career-section__content {
+		max-width: 500px;
+		margin: 0 auto 64px;
+	}
+
+	.career-section__subtitle {
+		font-size: 14px;
+		font-weight: 700;
+		color: $color__primary;
+		text-transform: uppercase;
+	}
+
+	.career-section__title {
+		font-size: 42px;
+		font-weight: 700;
+		margin-bottom: 0;
+
+		@media(max-width: 767px) {
+			font-size: 36px;
+		}
+	}
+}
+
+.display-grid{
+	display: grid;
+}
+
+.job-item {
+	background: $color__secondary;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.41);
+	padding: 20px 46px 20px;
+
+	img{
+		max-height: 65px;
+	}
+
+	@media(max-width: 576px) {
+		padding: 20px 30px 20px;
+	}
+
+	&__title {
+		color: $color__primary;
+		font-size: 32px;
+		line-height: 1;
+		font-weight: 700;
+		margin-bottom: 0;
+	}
+
+	&__location {
+		color: #fff;
+		font-size: 18px;
+		font-weight: 700;
+		text-transform: uppercase;
+		margin-bottom: 20px;
+	}
+
+	&__desc {
+		color: #fff;
+		font-size: 16px;
+
+		p {
+			margin-bottom: 0;
+		}
+	}
+
+	&__footer {
+		padding-top: 17px;
+		border-top: 1px solid $color__primary;
+		margin-top: 17px;
+
+		 a {
+			display: inline-flex;
+			align-items: center;
+			font-size: 16px;
+			color: #fff;
+			 margin-bottom: 10px;
+
+			&:not(:last-child) {
+				margin-right: 20px;
+			}
+
+			.info-icon {
+				height: 34px;
+				width: 34px;
+				background: $color__primary;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 30px;
+				margin-right: 10px;
+			}
+
+			&:hover {
+				color: $color__primary;
+			}
+		}
+	}
+
+	&__subtitle {
+		color: #fff;
+		font-size: 18px;
+		font-weight: 700;
+	}
+}

@@ -1,0 +1,268 @@
+%widget-title {
+	color: $color__accent;;
+	@include font(3rem, 1.2, 300, capitalize);
+	margin-bottom: 2rem;
+	padding-bottom: 2rem;
+	position: relative;
+	&:before {
+		content: "";
+		position: absolute;
+		display: inline-block;
+		bottom: 0;
+		width: 50px;
+		height: 2px;
+		left: 0;
+		z-index: 1;
+		background: $color__accent;;
+	}
+}
+
+//List Links | Hover
+%list-link-styles {
+	color: $color__primary;;
+
+	a {
+		color: $color__primary;;
+		text-decoration: none;
+		text-transform: capitalize;
+		@include font(2.4rem, 1.2, 300);
+		&.url,
+		&.rsswidget {
+			color: darken(#606060, 15);
+		}
+		&.rsswidget {
+			@include font(2.4rem, 1.2, 300);
+		}
+		&:hover {
+			color: $color__accent;
+		}
+	}
+}
+
+//List styles
+%list-styles {
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		li {
+			margin-bottom: 0;
+			padding-bottom: 1rem;
+			@include font(1.7rem, 1.2, 300);
+			@extend %list-link-styles;
+			> div {
+				@include flex(row, space-between);
+				span {
+					color: $color__white;;
+				}
+			}
+			.rss-date,
+			.rssSummary {
+				@include font(1.7rem, 1.5, 300);
+			}
+			cite {
+				@include font(1.7rem, 1.5, 300);
+			}
+			ul.children {
+				padding: 1rem 0 0 1.6rem;
+			}
+			ul.sub-menu {
+				padding: 1rem 0 0 1.6rem;
+			}
+			&:last-child {
+				padding-bottom: 0;
+				margin-bottom: 0;
+			}
+			cite {
+				color: darken(#606060, $amount: 15);
+			}
+		}
+
+		+ li {
+			&:first-child {
+				margin-top: 0;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+//Modify widgets
+%widgets-modifier {
+	//widget text
+	&.widget_text {
+		color: $color__white;;
+		@include font(1.7rem, 1.2, 300);
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+	//widget tag cloud
+	&.widget_tag_cloud {
+		.tagcloud {
+			a {
+				color: $color__white;
+				background-color: $color__white;;
+				display: inline-block;
+				font-weight: 300;
+				padding: 0.5rem 1rem;
+				margin: 0;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				border-radius: 5px;
+				margin-bottom: 0.83rem;
+				margin-right: 0.8rem;
+				text-decoration: none;
+				transition: all 0.4s;
+				&:hover {
+					background-color: $color__white;;
+				}
+			}
+		}
+	}
+
+	//widget calendar
+	&.widget_calendar {
+		table {
+			border-style: solid;
+			border-color: #ccc;
+			border-spacing: 0;
+			border-width: 1px 0 0 1px;
+			table-layout: fixed;
+			width: 100%;
+			text-align: center;
+			th,
+			td {
+				color: $color__white;;
+				border-style: solid;
+				border-color: #ccc;
+				border-width: 0 1px 1px 0;
+				padding: 0.8rem;
+				@include font(1.6rem, 1.2, 600);
+				a {
+					color: $color__white;;
+					text-decoration: none;
+					&:hover {
+						color: $color__white;;
+					}
+				}
+				&#today {
+					background: $color__white;;
+					color: $color__white;
+					a {
+						color: $color__white;
+					}
+				}
+			}
+			td {
+				font-weight: 400;
+			}
+		}
+		.wp-calendar-nav {
+			// @include font(1.6rem, 1, 600);
+			@include flex(row, space-between);
+			span {
+				a {
+					color: $color__white;;
+					text-decoration: none;
+					&:hover {
+						color: var(--thm-color-secondary);
+					}
+				}
+			}
+		}
+		caption {
+			@include font(1.7rem, 1.2, 300);
+		}
+	}
+
+	//widget search
+	&.widget_search {
+		form {
+			@include flex(row, flex-start);
+			position: relative;
+		}
+
+		label {
+			width: 100%;
+		}
+
+		input[type="search"] {
+			@include font(1.6rem, 1, 300);
+			border: 1px solid #eee;
+			padding: 2rem 6.8rem 2rem 2rem;
+			// border-radius: 0.5rem;
+			// border-right: 0;
+			width: 100%;
+		}
+
+		.search-submit {
+			color: $color__white;
+			background: $color__white;;
+			border: 0;
+			transition: all 0.4s;
+			border-radius: 0;
+			padding: 0.8rem;
+			@include font(1.6rem, 1.5, 300);
+			span {
+				padding: 0;
+				i {
+					padding: 0 1rem;
+					@include font(1.6rem, 2.95);
+				}
+			}
+			&:hover {
+				color: $color__white;
+				background: var(--thm-color-secondary);
+			}
+		}
+	}
+	&.widget_recent_comments {
+		span {
+			a {
+				font-weight: 300;
+			}
+		}
+	}
+}
+
+//select field style
+%select-field {
+	select {
+		width: 100%;
+		padding: 1.6rem;
+		@include font(1.7rem, 1.2, 300);
+		transition: all 0.4s;
+		&:focus,
+		&:hover {
+			outline: 0;
+			box-shadow: none;
+			// border-color: $color__white;;
+		}
+	}
+}
+
+// .widget-area {
+// 	@media (min-width: $lg) {
+// 		// margin-top: 3rem;
+// 	}
+// }
+
+.widget {
+	// background: var(--thm-color-light-bg);
+	padding: 3rem;
+	border-radius: 0;
+	margin: 0 0 3rem;
+	border: 1px solid #eee;
+	.widget-title {
+		@extend %widget-title;
+	}
+	@extend %list-styles;
+	@extend %list-link-styles;
+	@extend %widgets-modifier;
+	@extend %select-field;
+}

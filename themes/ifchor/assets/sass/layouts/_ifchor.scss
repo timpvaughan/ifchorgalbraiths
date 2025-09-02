@@ -1,0 +1,75 @@
+.site {
+  overflow: hidden;
+  padding-right: 50px;
+}
+
+body.no-scroll {
+  overflow-y: hidden;
+}
+
+.contact-form {
+  input[type="submit"] {
+    color: $color__white;
+    background: $color__accent;
+    position: relative;
+    border-radius: 0;
+    padding: 1.3rem 2rem;
+    @include font(1.8rem, 1, 700);
+    border: 0;
+    display: block;
+    &:hover {
+      background: $color__white;
+      color: $color__accent;
+    }
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    background: #505d74;
+    padding: 1.5rem 2rem;
+    color: $color__white;
+    border: 0;
+    border-radius: 0;
+    &::placeholder {
+      color: $color__white;
+      @include font(2.4rem);
+    }
+  }
+  input[type="text"],
+  input[type="email"] {
+    &:focus {
+      background: #505d74;
+    }
+  }
+}
+
+.image-frame {
+  background: $color__primary;
+  position: relative;
+  span {
+    color: $color__white;
+    transform: rotate(-90deg);
+    display: inline-block;
+    margin-top: 6rem;
+  }
+}
+
+.glide-gallery {
+  .glide__slide {
+    opacity: 0.5;
+    transition: all 0.4s;
+    &.glide__slide--active {
+      opacity: 1;
+    }
+    img {
+      max-height: 1000px;
+    }
+  }
+  .glide__arrow {
+    box-shadow: none;
+    text-shadow: none;
+    i {
+      text-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
+    }
+  }
+}

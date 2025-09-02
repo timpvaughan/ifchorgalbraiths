@@ -1,0 +1,28 @@
+.container-fluid{
+    padding-right: calc(var(--bs-gutter-x) * 15);
+    padding-left: calc(var(--bs-gutter-x) * 15);
+}
+
+.banner__home{
+    background-color: $color__secondary;
+}
+
+.section__padding{
+    padding:80px 0;
+    &__large{
+        padding:120px 0;
+     }
+}
+
+.left-column{
+    p.title{
+        font-size: 3.5rem;
+        font-weight:700;
+    }
+}
+
+.right-column{
+    p:last-of-type{
+        margin-bottom: 0;
+    }
+}

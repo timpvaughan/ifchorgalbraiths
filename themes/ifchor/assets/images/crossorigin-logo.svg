@@ -1,0 +1,12 @@
+<svg id="crossorigin-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="49.76" height="42.372" viewBox="0 0 49.76 42.372">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_25" data-name="Rectangle 25" width="49.76" height="42.372" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Group_39" data-name="Group 39" transform="translate(0 0)" clip-path="url(#clip-path)">
+    <path id="Path_202" data-name="Path 202" d="M95.935,39.645a6.545,6.545,0,1,1-6.512-6.512,6.536,6.536,0,0,1,6.512,6.512m4.974,0A11.487,11.487,0,1,0,89.422,51.164a11.55,11.55,0,0,0,11.486-11.519" transform="translate(-51.149 -18.459)" fill="#fff"/>
+    <rect id="Rectangle_24" data-name="Rectangle 24" width="58.28" height="1.643" transform="translate(0 41.21) rotate(-45)" fill="#fff"/>
+    <path id="Path_203" data-name="Path 203" d="M41.211,42.372l-.365-.365L0,1.162,1.162,0l41.21,41.21Z" transform="translate(0 0)" fill="#fff"/>
+  </g>
+</svg>

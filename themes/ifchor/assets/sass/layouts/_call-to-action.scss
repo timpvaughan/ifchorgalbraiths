@@ -1,0 +1,64 @@
+.call-to-action {
+	background: $color__secondary;
+	padding: 100px;
+	// height: 60vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 1;
+	min-height: 600px;
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-size: contain;
+	background-image: url("../images/circle_shape.png");
+
+	@media(max-width: 768px) {
+		background-position: center right;
+		background-size: cover;
+	}
+
+	@media(max-width: 991px) {
+		padding: 100px 0;
+	}
+
+
+
+	.top-arrow-icon {
+		margin-bottom: 35px;
+	}
+
+	&__content{
+		p,a{
+			color:$color__white;
+			strong{
+				color: $color__primary;
+			}
+		}
+	}
+
+	&__title {
+		color: $color__primary;
+		font-size: 68px;
+		font-weight: 700;
+		margin-bottom: 22px;
+
+		@media(max-width: 767px) {
+			font-size: 48px;
+		}
+	}
+
+	&__desc {
+		color: $color__white;
+		font-size: 24px;
+		margin-bottom: 35px;
+
+		@media(max-width: 991px) {
+			font-size: 20px;
+
+			br {
+				display: none;
+			}
+		}
+	}
+}

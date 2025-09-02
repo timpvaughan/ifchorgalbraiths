@@ -1,0 +1,87 @@
+.widget {
+    .wp-block-group {
+        .wp-block-group__inner-container {
+            > h2,
+            > h3,
+            > h4 {
+                @extend %widget-title;
+            }
+        }
+    }
+}
+
+.wp-block-latest-posts__list li {
+    margin: 0;
+}
+
+.wp-block-latest-comments {
+    margin: 0;
+    padding: 0;
+    a {
+        @include font(1.6rem, 1.5, 400);
+        &:hover {
+            color: $color__accent;
+            text-decoration: none;
+        }
+    }
+}
+
+.widget_block {
+    &.widget_search {
+        .wp-block-search {
+            @include flex(column);
+            label {
+                color: $color__accent;
+                @include font(2.4rem, 1.2, 700, capitalize);
+                position: relative;
+                margin-bottom: 2rem;
+                padding-bottom: 2rem;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    display: inline-block;
+                    bottom: 0;
+                    width: 50px;
+                    height: 2px;
+                    left: 0;
+                    z-index: 1;
+                    background: $color__accent;
+                }
+            }
+            button {
+                @include font(1.6rem, 1.2, 500);
+                color: $color__white;
+                position: relative;
+                background-color: transparent;
+                border-radius: 0;
+                border: 0;
+                @media (max-width: 400px) {
+                    margin-left: 0;
+                }
+                &:after {
+                    content: "";
+                    transition: all 0.4s;
+                    background: $color__primary;
+                    clip-path: polygon(80% 0, 100% 20%, 100% 100%, 0 100%, 0 0);
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    z-index: -1;
+                }
+                &:hover {
+                    // border-color: $color__accent;
+                    // background-color: $color__accent;
+                    &:after {
+                        background: $color__accent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.wp-block-latest-comments__comment {
+    margin-bottom: 1rem;
+}

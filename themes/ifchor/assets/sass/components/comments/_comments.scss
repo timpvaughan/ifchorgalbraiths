@@ -1,0 +1,141 @@
+.comment-content a {
+	word-wrap: break-word;
+}
+
+.bypostauthor {
+	display: block;
+}
+
+.comment-respond {
+	border-top: 1px solid #eee;
+	margin-top: 2rem;
+	padding-top: 2rem;
+}
+.ifchor-comment-form {
+	.comment-form-row {
+		@include flex(row, flex-start);
+		@media (max-width: 768px) {
+			@include flex(column, flex-start);
+		}
+		margin-bottom: 1rem;
+		.comment-form-field {
+			width: 100%;
+			&:not(:last-child) {
+				margin-right: 2rem;
+				@media (max-width: 768px) {
+					margin-bottom: 1rem;
+				}
+			}
+		}
+	}
+	label {
+		@include font(2rem, 1.2, 300);
+		font-weight: 300;
+		margin-bottom: 0.5rem;
+		span {
+			color: $color__accent;
+		}
+	}
+}
+
+//@include
+.comments-area {
+	margin-top: 5rem;
+	padding: 0;
+	// background: $color__white;
+	// @extend %box-shadow;
+	.comments-title,
+	.comment-reply-title {
+		@include font(3rem, 2.5, 300, capitalize);
+		color: $color__text-main;
+	}
+
+	p.no-comments {
+		background: $color__white;
+	}
+
+	ol.comment-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		li.comment {
+			list-style: none;
+			transition: all 0.4s;
+			&:not(:last-child) {
+				margin-bottom: 3rem;
+				border-bottom: 1px solid $color__primary;
+			}
+		}
+	}
+
+	.ifchor-comment-box {
+		display: flex;
+		justify-content: flex-start;
+		// flex-wrap: wrap;
+		.ifchor-comment-box__img {
+			margin-right: 2rem;
+			@media (min-width: 769px) {
+				min-width: 70px;
+			}
+			// @media (max-width: 768px) {
+			// 	margin-right: 1rem;
+			// 	margin-bottom: 1.5rem;
+			// }
+			.avatar {
+				@media (max-width: 768px) {
+					max-width: 30px;
+					max-height: 30px;
+				}
+				border-radius: 5px;
+			}
+		}
+		.ifchor-comment-box__content {
+			@include flex(column, flex-start);
+			width: 100%;
+			.ifchor-comment-box__meta {
+				@include flex(row, space-between, flex-start, wrap);
+				@media (max-width: 768px) {
+					@include flex(column, flex-start);
+				}
+				margin-bottom: 2rem;
+				.ifchor-comment-box__author {
+					@include font(1.6rem, 1, 300);
+					color: $color__text-main;
+					margin-bottom: 1rem;
+				}
+				.ifchor-comment-box__time {
+					@include font(1.4rem, 1, 400);
+				}
+				a {
+					color: $color__text-main;
+					text-decoration: none;
+					&.url {
+						color: $color__text-main;
+						@include font(2.4rem, 1, 300);
+					}
+					&.comment-reply-link {
+						color: $color__white;
+						padding: 0.8rem 1.2rem 1rem;
+						@include font(1.2rem, 1, 500, lowercase);
+						border-radius: 0;
+						border: 1px solid $color__primary;
+						background-color: $color__primary;
+						@media (max-width: 768px) {
+							font-size: 1.2rem;
+							padding: 0.5rem;
+							margin-top: 1.5rem;
+						}
+						&:hover {
+							background: $color__accent;
+							border-color: $color__accent;
+						}
+					}
+				}
+				> div {
+					@include flex(column);
+				}
+			}
+		}
+	}
+}

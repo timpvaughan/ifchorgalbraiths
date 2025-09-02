@@ -1,0 +1,52 @@
+.page-preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: #fff;
+
+	.skills-graph-circle {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.skills {
+		&-graph-circle {
+			position: relative;
+			width: 200px;
+			height: 200px;
+			padding: 10px 0;
+
+			&__title {
+				color: $color__secondary;
+				font-weight: 700;
+				letter-spacing: 2px;
+			}
+
+			&__count {
+				position: absolute;
+				top: 55%;
+				left: 52%;
+				color: $color__black;
+				transform: translate(-50%, -50%);
+				font-weight: 700;
+
+				&:after {
+					content: '%';
+				}
+			}
+
+			&__bar {
+				stroke: $color__primary;
+			}
+
+			&__backg {
+				stroke: transparentize($color__primary, .7);
+			}
+		}
+	}
+}

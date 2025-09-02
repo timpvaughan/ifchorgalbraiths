@@ -1,0 +1,60 @@
+.bgc-primary {
+    background: $color__primary;
+}
+
+.bgc-accent {
+    background: $color__accent;
+}
+
+.bgc-light-gray {
+    background: #EBECEF;
+}
+
+.bgc-ch {
+    background: #EB5C63;
+}
+
+.bgc-cp {
+    background: #4F4EA2;
+}
+
+.bgc-lp {
+    background: #047E8B;
+}
+
+.bgc-pp {
+    background: #76CEDB;
+}
+
+.bg-team {
+    background: $color__primary;
+    background-image: url(../images/team-bgi.svg);
+    background-size: auto;
+    background-attachment: scroll;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+    @media (max-width: 1199px) {
+        background-size: 100%;
+    }
+}
+
+.bg-short-intro {
+    background: $color__primary;
+    background-image: url(../images/bg-short-intro.svg);
+    background-size: auto;
+    background-attachment: scroll;
+    background-position: 0 30%;
+    background-repeat: no-repeat;
+    @media (max-width: 575px) {
+        background-size: 50%;
+        background-position: 0 15%;
+    }
+}
+
+.bg-hero {
+    background-size: cover;
+    background-attachment: scroll;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-image: url(../images/hero-bg.jpg);
+}

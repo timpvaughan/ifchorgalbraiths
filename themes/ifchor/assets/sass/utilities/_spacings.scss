@@ -1,0 +1,92 @@
+.py-150 {
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+    @media (max-width: 575px) {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+.py-110 {
+    padding-top: 11rem;
+    padding-bottom: 11rem;
+    @media (max-width: 575px) {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+
+.mt-70 {
+    margin-top: 7rem;
+}
+
+mt-40 {
+    margin-top: 4rem;
+}
+
+.mb-50 {
+    margin-bottom: 5rem;
+}
+
+.mt-lg-200 {
+    @media (min-width: 991px) {
+        margin-top: 20rem;
+    }
+}
+
+.ps-lg-100 {
+    @media (min-width: 992px) {
+        padding-left: 10rem;
+    }
+}
+
+.pb-150 {
+    padding-bottom: 15rem;
+    @media (max-width: 575px) {
+        padding-bottom: 6rem;
+    }
+}
+
+.pt-450 {
+    padding-top: 45rem;
+    @media (max-width: 575px) {
+        padding-top: 20rem;
+    }
+}
+
+.vh-80 {
+    height: 80vh;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+//.admin-bar {
+//    .side-panel,
+//    .site-header {
+//        margin-top: 32px;
+//        @media (max-width: 782px) {
+//            margin-top: 46px;
+//        }
+//    }
+//    // .top-spacing {
+//    //     margin-top: 0;
+//    // }
+//}
+
+.top-spacing {
+    margin-top: 105px;
+    @media screen and (max-width: 991px) {
+        margin-top: 93px;
+    }
+    @media screen and (max-width: 768px) {
+        margin-top: 72px;
+    }
+    @media screen and (max-width: 575px) {
+        margin-top: 68px;
+    }
+    @media screen and (max-width: 451px) {
+        margin-top: 64px;
+    }
+}
