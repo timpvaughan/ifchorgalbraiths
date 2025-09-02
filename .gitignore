@@ -1,0 +1,47 @@
+# ---- wp-content baseline ignores ----
+uploads/
+upgrade/
+upgrade-temp-backup/
+cache/
+wflogs/
+w3tc-config/
+smush-webp/
+ai1wm-backups/
+debug.log
+*.log
+wp-defender-secrets.php
+maintenance/
+maintenance.php
+languages/
+
+# ---- Build artefacts ----
+node_modules/
+dist/
+build/
+*.map
+
+# ---- Composer ----
+vendor/
+composer.lock
+
+# ---- OS/Editor ----
+.DS_Store
+*.swp
+.idea/
+.vscode/
+*.zip
+
+# ---- Themes: track ONLY our custom theme ----
+themes/*
+!themes/ifchor/
+!themes/index.php
+
+# ---- Plugins: ignore all by default (uncomment to whitelist your custom ones) ----
+plugins/*
+# !plugins/ifchor-core/
+# !plugins/your-custom-plugin/
+
+# ---- MU-plugins: ignore all by default (uncomment to whitelist if needed) ----
+mu-plugins/*
+# !mu-plugins/your-mu-plugin.php
+# !mu-plugins/your-mu-plugin-folder/
