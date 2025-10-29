@@ -1,5 +1,8 @@
+console.log("👂 Menu toggle event listener attached");
 (function ($) {
-	$(document).ready(function () {
+	$(function () {
+		console.log("💡 jQuery ready");
+
 		// Burger menu
 		$(".burger-menu, .arrow-menu").on("click", function (event) {
 			event.preventDefault();
@@ -62,24 +65,33 @@
 		});
 
 		// Menu toggle for primary
-		$("#menu-primary-menu li > a").each(function () {
+		console.log("Menu toggle script loaded");
+
+		$("#menu-primary-menu > li.menu-item-has-children > a").each(function () {
 			const $parent = $(this).parent();
-			if ($parent.hasClass("level-0")) {
-				$('<span class="level-trigger"></span>').insertBefore($(this));
-			}
+			$('<span class="level-trigger"></span>').insertBefore($(this));
 		});
 
-		$("#menu-primary-menu").on("click", "span.level-trigger", function () {
-			const $parent = $(this).parent();
-			if ($parent.hasClass("menu-item-has-children")) {
-				if ($parent.hasClass("open")) {
-					$parent.children(".sub-menu").slideUp(400, () => $parent.removeClass("open"));
-					$parent.siblings().show();
-				} else {
-					$parent.siblings(".open").removeClass("open").children(".sub-menu").slideUp(400);
-					$parent.children(".sub-menu").slideDown(400, () => $parent.addClass("open"));
-					$parent.nextAll().hide();
-				}
+		// Replace existing handler with this
+		console.log("🧷 Binding direct menu click handler");
+
+		$("#menu-primary-menu").on("click", "span.level-trigger", function (e) {
+			console.log("👉 Direct trigger click");
+
+			e.preventDefault();
+			e.stopImmediatePropagation(); // just in case something else is listening
+
+			const $parent = $(this).closest("li.menu-item-has-children");
+
+			if ($parent.hasClass("open")) {
+				console.log("🔒 Closing submenu");
+				$parent.children(".sub-menu").slideUp(400, () => $parent.removeClass("open"));
+				$parent.siblings().show();
+			} else {
+				console.log("🔓 Opening submenu");
+				$parent.siblings(".open").removeClass("open").children(".sub-menu").slideUp(400);
+				$parent.children(".sub-menu").slideDown(400, () => $parent.addClass("open"));
+				$parent.nextAll().hide();
 			}
 		});
 
@@ -118,9 +130,14 @@
 				.on("select2:select", () => $("#our_people_form").trigger("submit"));
 		});
 
+		// $("#our_people_form").on("submit", function (e) {
+		// 	e.preventDefault();
+		// 	window.location.href = `${ifchor_vars.contacts_url}?${$(this).serialize()}`;
+		// });
+
 		$("#our_people_form").on("submit", function (e) {
 			e.preventDefault();
-			window.location.href = `${ifchor_vars.contacts_url}?${$(this).serialize()}`;
+			window.location.href = ifchor_vars.contacts_url + "?" + $(this).serialize();
 		});
 
 		$("#dept_items_filters")
@@ -166,3 +183,23 @@
 		}
 	});
 })(jQuery);
+
+document.querySelectorAll("#menu‑primary‑menu span.level‑trigger").forEach((el) => {
+	el.addEventListener(
+		"click",
+		function (e) {
+			e.preventDefault();
+			const li = this.closest("li.menu‑item‑has‑children");
+			if (!li) return;
+			if (li.classList.contains("open")) {
+				li.querySelector(".sub‑menu").style.display = "none";
+				li.classList.remove("open");
+			} else {
+				document.querySelector("#menu‑primary‑menu li.menu‑item‑has‑children.open")?.classList.remove("open");
+				li.querySelector(".sub‑menu").style.display = "block";
+				li.classList.add("open");
+			}
+		},
+		{ passive: false },
+	);
+});

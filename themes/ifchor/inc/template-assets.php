@@ -26,7 +26,7 @@ function ifchor_scripts()
 	wp_enqueue_script("bootstrap", IFCHOR_ASSETS_URI . "vendors/bootstrap/js/bootstrap.bundle.min.js", ["jquery"], $version, true);
 	wp_enqueue_script("swiper", IFCHOR_ASSETS_URI . "vendors/swiperjs/js/swiper-bundle.min.js", [], $version, true);
 	wp_enqueue_script("aos", "https://unpkg.com/aos@2.3.1/dist/aos.js", [], $version, true);
-	wp_enqueue_script("select2", IFCHOR_ASSETS_URI . "vendors/select2/js/select2.full.min.js", [], $version, true);
+	wp_enqueue_script("select2", IFCHOR_ASSETS_URI . "vendors/select2/js/select2.full.min.js", ["jquery"], $version, true);
 	wp_enqueue_script("simple-parallax", "https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js", [], $version, true);
 
 	if (is_home() || is_front_page()) {
@@ -45,27 +45,39 @@ function ifchor_scripts()
 	if (is_home() || is_front_page()) {
 		$deps[] = "vimeo";
 	}
-	wp_enqueue_script("ifchor", IFCHOR_ASSETS_URI . "js/app.js", $deps, $version, true);
-
-	global $wp_query;
-	wp_add_inline_script(
-		"ifchor",
-		"const ifchor_vars = " .
-			wp_json_encode([
-				"ajaxurl" => admin_url("admin-ajax.php"),
-				"posts" => $wp_query->query_vars,
-				"current_page" => get_query_var("paged") ?: 1,
-				"max_page" => $wp_query->max_num_pages,
-				"nonce" => wp_create_nonce("ifchor-nonce"),
-				"loading" => __("Loading...", "ifchor"),
-				"load_more" => __("Load more", "ifchor"),
-				"contacts_url" => get_post_type_archive_link("ig-contact"),
-				"offices_url" => get_page_link(get_page_by_path("our-offices")),
-				"home_url" => trailingslashit(home_url()),
-			]) .
-			";",
-		"before",
+	wp_enqueue_script(
+		"app-js",
+		IFCHOR_ASSETS_URI . "js/app.js",
+		["jquery", "select2"], // IMPORTANT: add select2 here
+		$version,
+		true,
 	);
+
+	wp_localize_script("app-js", "ifchor_vars", [
+		// "contacts_url" => get_permalink(get_page_by_path("contacts")), // Adjust if needed
+		"contacts_url" => site_url("/contacts/"),
+		"offices_url" => get_permalink(get_page_by_path("offices")), // Adjust if needed
+	]);
+
+	// global $wp_query;
+	// wp_add_inline_script(
+	// 	"ifchor",
+	// 	"const ifchor_vars = " .
+	// 		wp_json_encode([
+	// 			"ajaxurl" => admin_url("admin-ajax.php"),
+	// 			"posts" => $wp_query->query_vars,
+	// 			"current_page" => get_query_var("paged") ?: 1,
+	// 			"max_page" => $wp_query->max_num_pages,
+	// 			"nonce" => wp_create_nonce("ifchor-nonce"),
+	// 			"loading" => __("Loading...", "ifchor"),
+	// 			"load_more" => __("Load more", "ifchor"),
+	// 			"contacts_url" => get_post_type_archive_link("ig-contact"),
+	// 			"offices_url" => get_page_link(get_page_by_path("our-offices")),
+	// 			"home_url" => trailingslashit(home_url()),
+	// 		]) .
+	// 		";",
+	// 	"before",
+	// );
 
 	// Threaded comments
 	if (is_singular() && comments_open() && get_option("thread_comments")) {

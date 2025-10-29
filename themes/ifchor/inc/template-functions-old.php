@@ -482,78 +482,44 @@ function ifchor_contact_import_process()
 					}
 
 					if (sizeof($contacts) > 0) {
-						$imported_ids = [];
+						//delete all existing contacts
+						$existing_contacts = get_posts(["post_type" => "ig-contact", "numberposts" => -1]);
+						foreach ($existing_contacts as $eachpost) {
+							delete_post_thumbnail($eachpost->ID);
+							wp_delete_post($eachpost->ID, true);
+						}
 
 						foreach ($contacts as $contact) {
-							$contact_id_val = trim((string) $contact["id"]);
-							if ($contact_id_val === "") {
-								// skip or log missing ID
-								error_log("Skipping contact with missing ID: Name {$contact["name"]}");
-								continue;
-							}
-
-							$imported_ids[] = $contact_id_val;
-							error_log("Processing contact ID: {$contact_id_val} Name: {$contact["name"]}");
-
-							$existing_query = new WP_Query([
+							$my_post = [
+								"post_title" => wp_strip_all_tags($contact["name"]),
+								"post_content" => "",
+								"post_status" => "publish",
 								"post_type" => "ig-contact",
-								"meta_key" => "_contact_id",
-								"meta_value" => $contact_id_val,
-								"posts_per_page" => 1,
-								"fields" => "ids",
-							]);
+							];
 
-							if ($existing_query->have_posts()) {
-								$post_id = $existing_query->posts[0];
-								error_log("Updating existing contact post ID: {$post_id}");
-
-								wp_update_post([
-									"ID" => $post_id,
-									"post_title" => wp_strip_all_tags($contact["name"]),
-								]);
-							} else {
-								error_log("Inserting new contact for ID: {$contact_id_val}");
-								$my_post = [
-									"post_title" => wp_strip_all_tags($contact["name"]),
-									"post_content" => "",
-									"post_status" => "publish",
-									"post_type" => "ig-contact",
-								];
-								$post_id = wp_insert_post($my_post);
-							}
+							// Insert the post into the database
+							$post_id = wp_insert_post($my_post);
 
 							if (!is_wp_error($post_id)) {
+								//the post is valid
+
 								update_post_meta($post_id, "_contact_city", $contact["city"]);
 								update_post_meta($post_id, "_contact_department", $contact["department"]);
 
-								$contact_others = [
-									"_contact_country" => $contact["country"],
-									"_contact_email" => $contact["email"],
-									"_contact_telephone_number" => $contact["telephone"],
-									"_contact_mobile_number" => $contact["mobile"],
-									"_contact_id" => $contact_id_val,
-									"_contact_show_dept" => $contact["show_dept"],
-									"_contact_show_phone" => $contact["show_phone"],
-									"_contact_office_id" => $contact["office_id"],
-								];
+								$contact_others = [];
+								$contact_others["_contact_country"] = $contact["country"];
+								$contact_others["_contact_email"] = $contact["email"];
+								$contact_others["_contact_telephone_number"] = $contact["telephone"];
+								$contact_others["_contact_mobile_number"] = $contact["mobile"];
+								$contact_others["_contact_id"] = $contact["id"];
+								$contact_others["_contact_show_dept"] = $contact["show_dept"];
+								$contact_others["_contact_show_phone"] = $contact["show_phone"];
+								$contact_others["_contact_office_id"] = $contact["office_id"];
 
 								update_post_meta($post_id, "_contact_others", $contact_others);
 							} else {
-								error_log("Error inserting/updating post for contact ID {$contact_id_val}: " . $post_id->get_error_message());
-							}
-						}
-
-						// ✅ Optional cleanup: remove contacts not in the current import
-						$all_contacts = get_posts([
-							"post_type" => "ig-contact",
-							"numberposts" => -1,
-							"fields" => "ids",
-						]);
-
-						foreach ($all_contacts as $contact_id) {
-							$stored_meta = get_post_meta($contact_id, "_contact_others", true);
-							if (!isset($stored_meta["_contact_id"]) || !in_array(intval($stored_meta["_contact_id"]), $imported_ids, true)) {
-								wp_delete_post($contact_id, true);
+								//there was an error in the post insertion,
+								//echo $post_id->get_error_message();
 							}
 						}
 					}
