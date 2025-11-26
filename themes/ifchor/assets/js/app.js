@@ -140,11 +140,101 @@ console.log("👂 Menu toggle event listener attached");
 			window.location.href = ifchor_vars.contacts_url + "?" + $(this).serialize();
 		});
 
-		$("#dept_items_filters")
-			.select2()
-			.on("change", function () {
-				window.location.href = `${ifchor_vars.offices_url}?dept=${$(this).val()}`;
+		const runOfficeCardAnimation = (context = document) => {
+			const $officeCards = $(context).find("#office_items .office_item");
+			if (!$officeCards.length) return;
+
+			$officeCards.css({
+				opacity: 0,
+				transform: "translateY(20px)",
+				transition: "transform 400ms ease, opacity 400ms ease",
 			});
+
+			setTimeout(() => {
+				$officeCards.each((idx, el) => {
+					setTimeout(() => {
+						$(el).css({ opacity: 1, transform: "translateY(0)" });
+					}, idx * 80);
+				});
+			}, 50);
+		};
+
+		const mountOfficeFilters = () => {
+			const $section = $(".contacts-filter-section");
+			if (!$section.length) return;
+
+			const $deptSelect = $section.find("#dept_items_filters");
+			const $regionLinks = $section.find("#office_items_filters a");
+
+			const fetchSection = (targetUrl, skipPush = false) => {
+				const $current = $(".contacts-filter-section");
+				$current.addClass("is-loading");
+
+				fetch(targetUrl, { credentials: "same-origin" })
+					.then((res) => res.text())
+					.then((html) => {
+						const parser = new DOMParser();
+						const doc = parser.parseFromString(html, "text/html");
+						const newSection = doc.querySelector(".contacts-filter-section");
+						if (!newSection) {
+							throw new Error("No contacts filter section found");
+						}
+
+						$current.replaceWith($(newSection));
+						if (!skipPush) {
+							window.history.pushState({}, "", targetUrl);
+						}
+
+						mountOfficeFilters();
+						runOfficeCardAnimation();
+					})
+					.catch((err) => {
+						console.error("Office filter fetch failed", err);
+						window.location.href = targetUrl; // fallback to full reload
+					});
+			};
+
+			$regionLinks.on("click", function (e) {
+				e.preventDefault();
+				fetchSection(this.href);
+			});
+
+			if ($deptSelect.length) {
+				$deptSelect
+					.select2()
+					.off("change")
+					.on("change", function () {
+						const url = new URL(window.location.href);
+						const params = url.searchParams;
+						const selectedDept = $(this).val();
+
+						if (selectedDept && selectedDept !== "ALL") {
+							params.set("dept", selectedDept);
+						} else {
+							params.delete("dept");
+						}
+
+						const locValue = params.get("loc");
+						if (!locValue || locValue === "ALL") {
+							params.delete("loc");
+						}
+
+						url.search = params.toString();
+						fetchSection(url.toString());
+					});
+			}
+
+			if (!window.officesPopstateAttached) {
+				window.officesPopstateAttached = true;
+				window.addEventListener("popstate", () => {
+					fetchSection(window.location.href, true);
+				});
+			}
+
+			runOfficeCardAnimation();
+		};
+
+		mountOfficeFilters();
 
 		// Timeline GSAP (conditionally loaded)
 		if (typeof gsap !== "undefined" && document.querySelector(".timeline-left-pin")) {

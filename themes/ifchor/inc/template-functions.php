@@ -834,17 +834,27 @@ function ifchor_wp_lazy_loading_enabled_avatar($default, $tag_name, $context)
 	return $default;
 }
 
-function office_items_filter_link($loc = "")
+function office_items_filter_link($loc = "", $dept = "")
 {
-	if ($loc == "") {
-		return get_the_permalink();
-	}
-
 	$loc = trim(strtoupper($loc));
+	$dept = trim(strtoupper($dept));
 
 	$link = get_the_permalink();
+	$args = [];
 
-	return add_query_arg("loc", $loc, $link);
+	if ($loc !== "" && $loc !== "ALL") {
+		$args["loc"] = $loc;
+	}
+
+	if ($dept !== "" && $dept !== "ALL") {
+		$args["dept"] = $dept;
+	}
+
+	if (empty($args)) {
+		return $link;
+	}
+
+	return add_query_arg($args, $link);
 }
 
 function office_items_filter_active_class($loc = "", $current = "")
@@ -858,17 +868,27 @@ function office_items_filter_active_class($loc = "", $current = "")
 	return $loc === $current ? "active" : "";
 }
 
-function office_items_dept_filter_link($dept = "")
+function office_items_dept_filter_link($dept = "", $loc = "")
 {
-	if ($dept == "") {
-		return get_the_permalink();
-	}
-
 	$dept = trim(strtoupper($dept));
+	$loc = trim(strtoupper($loc));
 
 	$link = get_the_permalink();
+	$args = [];
 
-	return add_query_arg("dept", $dept, $link);
+	if ($dept !== "" && $dept !== "ALL") {
+		$args["dept"] = $dept;
+	}
+
+	if ($loc !== "" && $loc !== "ALL") {
+		$args["loc"] = $loc;
+	}
+
+	if (empty($args)) {
+		return $link;
+	}
+
+	return add_query_arg($args, $link);
 } //end function office_items_dept_filter_link
 
 function office_items_dept_filter_active_class($dept = "", $current = "")
